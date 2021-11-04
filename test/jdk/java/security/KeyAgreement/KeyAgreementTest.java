@@ -67,27 +67,9 @@ public class KeyAgreementTest {
         // EC curve supported for KeyGeneration can found between intersection
         // of curves define in
         // "java.base/share/classes/sun/security/util/CurveDB.java"
-        // and
-        // "jdk.crypto.ec/share/native/libsunec/impl/ecdecode.c"
-        ECDH(
-                // SEC2 prime curves
-                "secp112r1", "secp112r2", "secp128r1", "secp128r2", "secp160k1",
-                "secp160r1", "secp192k1", "secp192r1", "secp224k1", "secp224r1",
-                "secp256k1", "secp256r1", "secp384r1", "secp521r1",
-                // ANSI X9.62 prime curves
-                "X9.62 prime192v2", "X9.62 prime192v3", "X9.62 prime239v1",
-                "X9.62 prime239v2", "X9.62 prime239v3",
-                // SEC2 binary curves
-                "sect113r1", "sect113r2", "sect131r1", "sect131r2", "sect163k1",
-                "sect163r1", "sect163r2", "sect193r1", "sect193r2", "sect233k1",
-                "sect233r1", "sect239k1", "sect283k1", "sect283r1", "sect409k1",
-                "sect409r1", "sect571k1", "sect571r1",
-                // ANSI X9.62 binary curves
-                "X9.62 c2tnb191v1", "X9.62 c2tnb191v2", "X9.62 c2tnb191v3",
-                "X9.62 c2tnb239v1", "X9.62 c2tnb239v2", "X9.62 c2tnb239v3",
-                "X9.62 c2tnb359v1", "X9.62 c2tnb431r1"
-        ),
-        XDH("X25519", "X448"),
+
+        ECDH("secp256r1", "secp384r1", "secp521r1"),
+        XDH("X25519", "X448", "x25519"),
         // There is no curve for DiffieHellman
         DiffieHellman(new String[]{});
 
@@ -119,7 +101,7 @@ public class KeyAgreementTest {
     }
 
     /**
-     * Perform KeyAgreement operation using native as well as JCE provider.
+     * Perform KeyAgreement operation
      */
     private static void testKeyAgreement(String provider, String kaAlgo,
             String kpgAlgo, AlgorithmParameterSpec spec) throws Exception {

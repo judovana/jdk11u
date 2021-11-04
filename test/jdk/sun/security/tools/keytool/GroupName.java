@@ -65,10 +65,9 @@ public class GroupName {
                 .shouldNotContain("Specifying -keysize for generating EC keys is deprecated");
         checkCurveName("e", "secp256r1");
 
-        gen("f", "-keyalg EC -groupname brainpoolP256r1")
+        kt("-list -v")
                 .shouldHaveExitValue(0)
-                .shouldNotContain("Specifying -keysize for generating EC keys is deprecated");
-        checkCurveName("f", "brainpoolP256r1");
+                .shouldContain("Subject Public Key Algorithm: 256-bit EC (secp256r1) key");
     }
 
     private static void checkCurveName(String a, String name)

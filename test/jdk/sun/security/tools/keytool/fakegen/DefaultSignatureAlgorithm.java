@@ -60,11 +60,9 @@ public class DefaultSignatureAlgorithm {
         check("DSA", 1024, null, "SHA256withDSA");
         check("DSA", 3072, null, "SHA256withDSA");
 
-        check("EC", 192, null, "SHA256withECDSA");
         check("EC", 384, null, "SHA384withECDSA");
-        check("EC", 571, null, "SHA512withECDSA");
 
-        check("EC", 571, "SHA256withECDSA", "SHA256withECDSA");
+        check("EC", 384, "SHA256withECDSA", "SHA256withECDSA");
     }
 
     private static void check(String keyAlg, int keySize,
